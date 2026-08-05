@@ -1,0 +1,520 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} /* =========================== PART 1 - TOP NAVIGATION BAR =========================== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(43, 12, 72);
+  color: white;
+  padding: 10px 40px;
+  font-size: 14px;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+.right span {
+  margin-right: 20px;
+}
+.right i {
+  margin: 0 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.right i:hover {
+  color: skyblue;
+} /* =========================== PART 2 - HEADER =========================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo i {
+  font-size: 28px;
+  color: blueviolet;
+}
+.logo h2 {
+  font-size: 24px;
+}
+.header ul {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+.header ul li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.header ul li:hover {
+  color: blueviolet;
+} /* =========================== PART 3 - BUTTONS =========================== */
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  background: blueviolet;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: rgb(83, 20, 142);
+}
+.contact-btn {
+  background: transparent;
+  border: 2px solid white;
+}
+.contact-btn:hover {
+  background: white;
+  color: black;
+} /* =========================== PART 4 - HERO SECTION =========================== */
+.content {
+  height: 50vh;
+  background: url("mountain image.jpg") center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+.Hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+.paragraph {
+  font-size: 22px;
+  line-height: 35px;
+}
+.buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+} /* =========================== PART 5 - WHY CHOOSE US =========================== */
+.container {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+} /* =========================== PART 6 - SERVICE CARDS =========================== */
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  width: 90%;
+  margin: 50px auto;
+}
+.cart {
+  width: 250px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 3px solid #ddd;
+  border-radius: 10px;
+  background: rgb(226, 233, 239);
+}
+.cart i {
+  font-size: 30px;
+  color: #2d3b69;
+  margin-bottom: 20px;
+}
+.cart h3 {
+  margin-bottom: 15px;
+} /* =========================== PART 7 - ABOUT US =========================== */
+.about {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.about-image img {
+  width: 100%;
+  height: 50vh;
+  border-radius: 10px;
+  display: block;
+}
+.about-content h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: #2d3b69;
+}
+.about-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  color: #555;
+}
+.about-content ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+.about-content ul li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+  font-size: 18px;
+}
+.about-content ul li i {
+  color: #22c55e;
+  font-size: 20px;
+} /* =========================== PART 8 - Icons =========================== */
+.service {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 50px auto;
+}
+.serve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.serve h2 {
+  font-size: 38px;
+  margin-bottom: 5px;
+  color: #2d3b69;
+}
+.serve p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #555;
+}
+.service-card {
+  width: 280px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+.service-card i {
+  font-size: 45px;
+  color: blueviolet;
+  margin-bottom: 15px;
+}
+.service-card h3 {
+  margin-bottom: 10px;
+}
+.service-card p {
+  color: #666;
+  line-height: 1.5;
+} /* =========================== PART 9 - TESTIMONIALS =========================== */
+.text-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+.text-title p {
+  font-size: 45px;
+}
+.tests {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0;
+}
+.test {
+  width: 320px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+.quote {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.quote i {
+  font-size: 28px;
+  color: #1e3a8a;
+  margin-top: 5px;
+}
+.quote p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+.quote h4 {
+  margin-bottom: 5px;
+}
+.quote span {
+  color: #666;
+  font-size: 14px;
+} /* =========================== PART 10 - Pricing Plans =========================== */
+.pricing-title h2 {
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+
+.pricing {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.price-card {
+  width: 260px;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden; /* Important */
+  background: #fff;
+}
+
+.price {
+  padding: 25px 20px;
+}
+
+#colorful {
+  position: relative; 
+  background: #2563eb;
+  color: white;
+  padding: 25px 20px;
+}
+
+.popular {
+  position: absolute;
+  top: 15px;
+  right: -38px;
+  background: white;
+  color: #2563eb;
+  padding: 5px 40px;
+  font-size: 13px;
+  font-weight: bold;
+  transform: rotate(45deg);
+}
+
+.amount {
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.month {
+  font-size: 14px;
+}
+
+.price-card ul {
+  list-style: none;
+  text-align: left;
+  padding: 20px;
+}
+
+.price-card ul li {
+  margin: 12px 0;
+}
+
+/* =========================== PART 10 - Designs =========================== */
+
+
+.design h2 {
+  text-align: center;
+  margin: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 300px;
+}
+
+.card {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #fff;
+  margin: 10px;
+}
+
+/*1*/
+.contentss {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/*2*/
+.card2 {
+  width: 100%;
+  height: 150px;
+  background: url("development.jpg") center/cover;
+  position: relative;
+  display: flex;
+}
+
+/*3*/
+.card3 {
+  width: 100%;
+  height: 150px;
+  background: url("seo.jpg") center/cover;
+  position: relative;
+  display: flex;
+}
+
+.boxs {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: green;
+  color: white;
+  border: none;
+  padding: 4px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.web {
+  padding: 15px;
+}
+
+.web h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.web p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* =========================== PART ~ forms =========================== */
+
+
+.contact {
+  width: 80%;
+  margin: 50px auto;
+  text-align: center;
+}
+.contact h2 {
+  font-size: 35px;
+  margin-bottom: 25px;
+}
+.row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.row input {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 35px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+
+/* =========================== PART ~ Footer =========================== */
+
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #0b1f3a;
+  color: white;
+  padding: 40px;
+}
+.footer h3 {
+  margin-bottom: 15px;
+}
+.footer p {
+  color: #ccc;
+  line-height: 22px;
+}
+.footer ul {
+  list-style: none;
+}
+
+/* .footer ul li { margin-bottom: 10px; } */
+
+
+.foot i {
+  margin-top: 15px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+.news input {
+  width: 220px;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+}
+.news button {
+  width: 220px;
+  padding: 10px;
+  margin-top: 10px;
+  background: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* last part */
+
+
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #071529;
+  color: white;
+  padding: 15px 40px;
+  font-size: 14px;
+  border: 1px solid white;
+}
+.copy-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
