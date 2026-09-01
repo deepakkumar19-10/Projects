@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #f0fdf4 100%);
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  width: 100%;
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 28px 20px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+  .App {
+    margin: 15px;
+    padding: 20px 14px;
+  }
+}

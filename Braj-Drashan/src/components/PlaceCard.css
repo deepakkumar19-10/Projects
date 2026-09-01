@@ -1,0 +1,152 @@
+/* =========================================================
+   PLACE CARD (Unified with Braj Tokens)
+========================================================= */
+
+.place-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--braj-white, #ffffff);
+  border: 1px solid var(--braj-border, #eee2d4);
+  border-radius: var(--braj-radius-md, 16px);
+  overflow: hidden;
+  box-shadow: var(--braj-shadow-sm, 0 6px 20px rgba(45, 32, 24, 0.06));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.place-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--braj-shadow-md, 0 14px 34px rgba(45, 32, 24, 0.12));
+  border-color: rgba(217, 119, 6, 0.35);
+}
+
+.place-image-wrapper {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.place-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.place-card:hover .place-image {
+  transform: scale(1.06);
+}
+
+.image-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(23, 50, 77, 0.85) 0%,
+    rgba(23, 50, 77, 0.25) 50%,
+    transparent 100%
+  );
+}
+
+.place-category {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 12px;
+  border-radius: var(--braj-radius-full, 9999px);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--braj-primary-dark, #b85f05);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.image-title {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+}
+
+.image-title h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.image-title p {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12.5px;
+}
+
+.place-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.place-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--braj-primary, #d97706);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.place-description {
+  margin: 0 0 18px;
+  color: var(--braj-muted, #786a5d);
+  font-size: 14px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.place-btn {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 16px;
+  border: 1px solid var(--braj-border, #eee2d4);
+  border-radius: 10px;
+  background: var(--braj-bg, #fff9ed);
+  color: var(--braj-navy, #17324d);
+  font-size: 13.5px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.btn-arrow {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--braj-primary, #d97706);
+  color: #ffffff;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.place-btn:hover {
+  background: var(--braj-primary, #d97706);
+  border-color: var(--braj-primary, #d97706);
+  color: #ffffff;
+}
+
+.place-btn:hover .btn-arrow {
+  background: #ffffff;
+  color: var(--braj-primary, #d97706);
+  transform: translateX(3px);
+}

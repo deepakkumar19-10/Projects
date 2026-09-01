@@ -1,0 +1,111 @@
+/* =================================
+   FORM
+================================= */
+
+.form-container {
+  width: 100%;
+}
+
+/* Heading */
+
+.form-container h3 {
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #0f172a;
+
+  margin-bottom: 25px;
+}
+
+/* Labels */
+
+.form-container label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #334155;
+
+  text-align: left;
+}
+
+/* Inputs */
+
+.form-container input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  background: #f8fafc;
+
+  color: #0f172a;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.25s ease;
+}
+
+/* Input Focus */
+
+.form-container input:focus {
+  background: white;
+
+  border-color: #6366f1;
+
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* Placeholder */
+
+.form-container input::placeholder {
+  color: #94a3b8;
+}
+
+/* Button */
+
+.form-container button {
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+/* Button Hover */
+
+.form-container button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+
+/* Button Active */
+
+.form-container button:active {
+  transform: scale(0.98);
+}

@@ -1,0 +1,91 @@
+/* =================================
+   JOKER
+================================= */
+
+.joker {
+  text-align: center;
+
+  padding: 10px;
+}
+
+/* Joker Heading */
+
+.joker h3 {
+  font-size: 25px;
+
+  font-weight: 800;
+
+  color: #7c3aed;
+
+  margin-bottom: 25px;
+}
+
+/* Joke Area */
+
+.joke-content {
+  padding: 25px;
+
+  border-radius: 15px;
+
+  background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+
+  border: 1px solid #ddd6fe;
+
+  margin-bottom: 20px;
+}
+
+/* Setup */
+
+.joker .setup {
+  font-size: 20px;
+
+  line-height: 1.5;
+
+  color: #1e293b;
+
+  margin-bottom: 18px;
+}
+
+/* Punchline */
+
+.joker .punchline {
+  font-size: 17px;
+
+  line-height: 1.5;
+
+  color: #64748b;
+
+  font-style: italic;
+}
+
+/* Button */
+
+.joker button {
+  padding: 12px 25px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.joker button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+}
+
+.joker button:active {
+  transform: scale(0.96);
+}

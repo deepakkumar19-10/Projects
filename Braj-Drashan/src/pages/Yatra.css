@@ -1,0 +1,150 @@
+/* src/pages/Yatra.css */
+.yatra-page-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.yatra-page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.yatra-page-header h1 {
+  font-size: 2.2rem;
+  color: #5c381e;
+  margin-bottom: 6px;
+  padding-top: 40px;
+}
+
+.yatra-page-header p {
+  color: #8c6a4d;
+  font-size: 1rem;
+}
+
+.yatra-day-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.yatra-tab-btn {
+  background-color: #faf5ee;
+  color: #5c381e;
+  border: 1px solid #d8c3a5;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.yatra-tab-btn.active,
+.yatra-tab-btn:hover {
+  background-color: #b24021;
+  color: #ffffff;
+  border-color: #b24021;
+}
+
+.yatra-detail-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e6d8c8;
+  padding: 35px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.badge-day {
+  background-color: #b24021;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.yatra-card-top h2 {
+  font-size: 1.8rem;
+  color: #5c381e;
+  margin: 10px 0 4px 0;
+}
+
+.yatra-tagline {
+  color: #8c6a4d;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.yatra-meta-bar {
+  background: #faf5ee;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #b24021;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+  font-size: 0.92rem;
+  color: #5c381e;
+}
+
+.yatra-timeline-section h3 {
+  color: #5c381e;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eadbcc;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #b24021;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.timeline-item p {
+  margin: 0;
+  color: #444444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.yatra-tips-box {
+  background-color: #fff9e6;
+  border: 1px solid #ffe082;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 25px;
+}
+
+.yatra-tips-box h4 {
+  color: #b24021;
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+}
+
+.yatra-tips-box p {
+  color: #5c381e;
+  margin: 0;
+  font-size: 0.9rem;
+}

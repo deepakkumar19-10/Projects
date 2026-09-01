@@ -1,0 +1,87 @@
+/* =========================================
+   RADHE TOAST (Responsive & Fixed Overflow)
+========================================= */
+
+.radhe-toast {
+  position: fixed;
+  top: 90px;
+  right: 24px;
+  z-index: 2000;
+  width: auto;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: var(--braj-radius-md, 16px);
+  box-shadow: 0 12px 35px rgba(73, 50, 37, 0.14);
+  animation: radheToastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.radhe-toast-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--braj-bg, #fff9ed);
+  border: 1px solid var(--braj-border, #eee2d4);
+  font-size: 20px;
+}
+
+.radhe-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.radhe-toast-content strong {
+  color: var(--braj-navy, #17324d);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.radhe-toast-content span {
+  color: var(--braj-muted, #786a5d);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+@keyframes radheToastIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Safe Fix */
+@media (max-width: 480px) {
+  .radhe-toast {
+    top: auto;
+    bottom: 20px;
+    left: 16px;
+    right: 16px;
+    max-width: none;
+    transform: none;
+    animation: radheToastMobileIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes radheToastMobileIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

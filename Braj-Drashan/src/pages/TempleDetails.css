@@ -1,0 +1,83 @@
+/* src/pages/TempleDetails.css */
+.temple-details-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.btn-back {
+  display: inline-block;
+  background-color: #faf5ee;
+  color: #b24021;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #d8c3a5;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: #b24021;
+  color: #ffffff;
+}
+
+.temple-details-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e6d8c8;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.details-header h1 {
+  color: #5c381e;
+  margin-bottom: 4px;
+}
+
+.details-header h2 {
+  color: #8c6a4d;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.details-main-img img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.details-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.info-box {
+  background: #faf5ee;
+  padding: 14px;
+  border-radius: 8px;
+  border-left: 4px solid #b24021;
+}
+
+.info-box h3 {
+  font-size: 0.95rem;
+  color: #5c381e;
+  margin-bottom: 4px;
+}
+
+.details-section {
+  margin-bottom: 20px;
+}
+
+.details-section h3 {
+  color: #5c381e;
+  border-bottom: 1px solid #eadbcc;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}

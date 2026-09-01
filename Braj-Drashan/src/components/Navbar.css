@@ -1,0 +1,223 @@
+/* =========================================================
+   BRAJ DARSHAN NAVBAR
+========================================================= */
+
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(217, 119, 6, 0.12);
+  box-shadow: 0 4px 20px rgba(45, 32, 24, 0.06);
+  transition: all 0.3s ease;
+}
+
+.navbar-content {
+  width: min(1300px, 92%);
+  min-height: 76px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Left & Right Link Containers */
+.nav-links-left,
+.nav-links-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links-left {
+  justify-content: flex-start;
+}
+
+.nav-links-right {
+  justify-content: flex-end;
+}
+
+/* Nav Item Link */
+.nav-link {
+  position: relative;
+  padding: 8px 0;
+  color: var(--braj-navy, #17324d);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2.5px;
+  border-radius: 4px;
+  background: var(--braj-primary, #d97706);
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--braj-primary, #d97706);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Center Brand / Logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.brand-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+}
+
+.title-en {
+  color: var(--braj-navy, #17324d);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.title-hi {
+  color: var(--braj-primary, #d97706);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Plan Trip CTA */
+.btn-nav-plan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: var(--braj-radius-full, 9999px);
+  background: var(--braj-primary, #d97706);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.22);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-nav-plan:hover {
+  background: var(--braj-primary-dark, #b85f05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(217, 119, 6, 0.32);
+}
+
+/* Hamburger Icon for Mobile */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 2.5px;
+  width: 100%;
+  background: var(--braj-navy, #17324d);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Slide-out Drawer */
+.mobile-drawer {
+  display: none;
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+========================================================= */
+
+@media (max-width: 992px) {
+  .navbar-content {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .nav-links-left,
+  .nav-links-right {
+    display: none; /* Hidden on mobile to use the drawer */
+  }
+
+  .nav-hamburger {
+    display: flex;
+    justify-self: end;
+  }
+
+  /* When mobile drawer is active */
+  .mobile-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: #ffffff;
+    border-top: 1px solid var(--braj-border, #eee2d4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-drawer .nav-link {
+    font-size: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--braj-border, #eee2d4);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-content {
+    min-height: 64px;
+  }
+
+  .nav-logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .title-en {
+    font-size: 13px;
+  }
+
+  .title-hi {
+    font-size: 11.5px;
+  }
+}

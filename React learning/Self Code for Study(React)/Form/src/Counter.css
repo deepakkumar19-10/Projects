@@ -1,0 +1,93 @@
+/* =================================
+   COUNTER
+================================= */
+
+.counter {
+  text-align: center;
+}
+
+/* Counter Boxes */
+
+.counter-box {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
+/* Individual Counter */
+
+.counter-item {
+  padding: 22px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+}
+
+/* Count */
+
+.counter-item h3 {
+  font-size: 18px;
+
+  color: #475569;
+
+  margin-bottom: 15px;
+}
+
+.counter-item span {
+  display: block;
+
+  font-size: 38px;
+
+  font-weight: 800;
+
+  color: #4f46e5;
+
+  margin-bottom: 15px;
+}
+
+/* Button */
+
+.counter-item button {
+  padding: 10px 22px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #4f46e5;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.counter-item button:hover {
+  background: #4338ca;
+
+  transform: translateY(-2px);
+}
+
+.counter-item button:active {
+  transform: scale(0.95);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .counter-box {
+    grid-template-columns: 1fr;
+  }
+}

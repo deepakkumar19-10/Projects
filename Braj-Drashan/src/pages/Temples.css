@@ -1,0 +1,56 @@
+/* src/pages/Temples.css */
+.temples-page-container {
+  max-width: 1280px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.temples-page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.temples-page-header h1 {
+  font-size: 2.2rem;
+  color: #5c381e;
+  margin-bottom: 6px;
+  padding-top: 40px;
+}
+
+.temples-page-header p {
+  color: #8c6a4d;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.city-filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-tab-btn {
+  background-color: #faf5ee;
+  color: #5c381e;
+  border: 1px solid #d8c3a5;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tab-btn.active,
+.filter-tab-btn:hover {
+  background-color: #b24021;
+  color: #ffffff;
+  border-color: #b24021;
+}
+
+.temples-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
