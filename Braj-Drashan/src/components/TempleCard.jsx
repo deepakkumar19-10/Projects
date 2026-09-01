@@ -8,7 +8,7 @@ function TempleCard({ temple }) {
     <div className="temple-card">
       <div className="temple-card-image-wrap">
         <img
-          src={temple.image}
+          src={`/${temple.image}`}
           alt={temple.nameHindi}
           onError={(e) => {
             e.target.src = "/images/temples/default-temple.jpg";
