@@ -59,6 +59,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -68,6 +69,7 @@ body {
   color: var(--braj-text);
   font-family: var(--braj-font-main);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 img,

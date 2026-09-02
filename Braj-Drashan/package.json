@@ -1,5 +1,5 @@
 {
-  "name": "braj-drashan",
+  "name": "divyabraj",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "i18next": "^23.16.8",
+    "mapbox-gl": "^3.8.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-i18next": "^15.1.4",
     "react-router-dom": "^7.18.3"
   },
   "devDependencies": {

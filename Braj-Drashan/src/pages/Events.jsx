@@ -1,97 +1,59 @@
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import MapView from "../components/MapView";
+import FestivalCountdown from "../components/FestivalCountdown";
+import eventsData from "../data/events.json";
 import "../App.css";
 import "./Events.css";
 
-const brajEvents = [
-  {
-    title: "श्री कृष्ण जन्माष्टमी",
-    location: "Mathura",
-    date: "भाद्रपद कृष्ण अष्टमी",
-    month: "भाद्रपद",
-    image: "/images/events/krishna-janmashtami-mathura.png",
-    desc: "मथुरा में श्रीकृष्ण जन्मभूमि पर आधी रात जन्मोत्सव, मंगला आरती और भव्य धार्मिक कार्यक्रमों के साथ जन्माष्टमी मनाई जाती है।",
-  },
-  {
-    title: "लट्ठमार होली",
-    location: "Barsana",
-    date: "फाल्गुन शुक्ल अष्टमी",
-    month: "फाल्गुन",
-    image: "/images/events/lathmar-holi-barsana.png",
-    desc: "बरसाना और नंदगांव की प्रसिद्ध लट्ठमार होली ब्रज की सबसे अनोखी होली परंपराओं में से एक है।",
-  },
-  {
-    title: "फूलों की होली",
-    location: "Vrindavan",
-    date: "फाल्गुन",
-    month: "फाल्गुन",
-    image: "/images/events/phoolon-ki-holi-vrindavan.png",
-    desc: "वृंदावन के मंदिरों में रंगों की जगह फूलों से खेली जाने वाली सुंदर और भक्तिमय होली।",
-  },
-  {
-    title: "गोवर्धन पूजा",
-    location: "Govardhan",
-    date: "कार्तिक शुक्ल प्रतिपदा",
-    month: "कार्तिक",
-    image: "/images/events/govardhan-puja.png",
-    desc: "गोवर्धन पर्वत की पूजा और अन्नकूट के अवसर पर भगवान कृष्ण को छप्पन भोग अर्पित किया जाता है।",
-  },
-  {
-    title: "अन्नकूट महोत्सव",
-    location: "Govardhan & Vrindavan",
-    date: "कार्तिक शुक्ल प्रतिपदा",
-    month: "कार्तिक",
-    image: "/images/events/annakoot-mahotsav.png",
-    desc: "विभिन्न प्रकार के भोजन का विशाल भोग भगवान को समर्पित किया जाता है और भक्त प्रसाद ग्रहण करते हैं।",
-  },
-  {
-    title: "राधाष्टमी",
-    location: "Barsana",
-    date: "भाद्रपद शुक्ल अष्टमी",
-    month: "भाद्रपद",
-    image: "/images/events/radhashtami-barsana.png",
-    desc: "बरसाना में राधारानी के जन्मोत्सव का भव्य आयोजन होता है और मंदिरों में विशेष श्रृंगार किए जाते हैं।",
-  },
-  {
-    title: "झूलन उत्सव",
-    location: "Vrindavan",
-    date: "श्रावण",
-    month: "श्रावण",
-    image: "/images/events/jhulan-utsav-vrindavan.png",
-    desc: "सावन के दिनों में राधा-कृष्ण को सुंदर झूलों पर विराजमान कर मंदिरों में झूलन उत्सव मनाया जाता है।",
-  },
-  {
-    title: "ब्रज परिक्रमा",
-    location: "Govardhan & Vrindavan",
-    date: "विभिन्न पर्व अवसर",
-    month: "वर्षभर",
-    image: "/images/events/braj-parikrama.png",
-    desc: "भक्तजन ब्रज के प्रमुख तीर्थ स्थलों की परिक्रमा करते हुए Mathura, Vrindavan, Govardhan, Barsana और Gokul की यात्रा करते हैं।",
-  },
-  {
-    title: "गोपाल जन्मोत्सव",
-    location: "Gokul",
-    date: "भाद्रपद कृष्ण नवमी",
-    month: "भाद्रपद",
-    image: "/images/events/gopal-janmotsav-gokul.png",
-    desc: "गोकुल में कृष्ण जन्म के अगले दिन नंदोत्सव और बाल गोपाल की लीलाओं से जुड़े धार्मिक कार्यक्रम आयोजित होते हैं।",
-  },
+const EVENT_CATEGORIES = [
+  "All",
+  "Spiritual Festival",
+  "Holi Celebration",
+  "Aarti & Raslila",
+  "Parikrama"
 ];
 
 export default function Events() {
+  const { t } = useTranslation();
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [viewMode, setViewMode] = useState("grid"); // 'grid' | 'map'
+  const [activeEventId, setActiveEventId] = useState(null);
+
+  const filteredEvents =
+    selectedCategory === "All"
+      ? eventsData
+      : eventsData.filter((e) => e.category === selectedCategory);
+
+  const eventMarkers = filteredEvents.map((e) => ({
+    id: e.id,
+    name: e.title,
+    nameHindi: e.title,
+    city: e.location,
+    latitude: e.latitude,
+    longitude: e.longitude,
+    image: e.image,
+    category: "event"
+  }));
+
   return (
     <main className="events-page page-transition">
       <section className="events-hero">
         <div className="section-tag">
-          <h1>🪷 ब्रज उत्सव</h1>
+          <h1>🪷 {t("events.heroTag", "ब्रज उत्सव")}</h1>
         </div>
         <h1>
           Festivals & <span>Events in Braj</span>
         </h1>
         <p>
-          Mathura, Vrindavan, Barsana, Gokul और Govardhan के प्रमुख आध्यात्मिक
-          एवं सांस्कृतिक उत्सवों की जानकारी।
+          Mathura, Vrindavan, Barsana, Gokul और Govardhan के प्रमुख आध्यात्मिक एवं सांस्कृतिक उत्सवों की संपूर्ण प्रामाणिक जानकारी।
         </p>
       </section>
 
+      {/* Bonus Feature: Real-Time Live Festival Countdown */}
+      <FestivalCountdown />
+
+      {/* Intro Header */}
       <section className="events-intro">
         <div>
           <div className="events-intro__eyebrow">
@@ -102,40 +64,105 @@ export default function Events() {
           </h2>
         </div>
         <p>
-          ब्रज में हर पर्व केवल उत्सव नहीं बल्कि भगवान श्रीकृष्ण और राधारानी की
-          लीलाओं से जुड़ा आध्यात्मिक अनुभव है।
+          ब्रज में हर पर्व केवल उत्सव नहीं बल्कि भगवान श्रीकृष्ण और राधारानी की लीलाओं से जुड़ा अलौकिक आध्यात्मिक अनुभव है।
         </p>
       </section>
 
-      <section className="events-grid">
-        {brajEvents.map((event) => (
-          <article className="event-card" key={event.title}>
-            <div className="event-card__image-container">
-              <img
-                src={event.image}
-                alt={event.title}
-                className="event-card__image"
-                loading="lazy"
-              />
-              <span className="event-card__location-overlay">
-                📍 {event.location}
-              </span>
-            </div>
+      {/* Controls: Category Filter & Map Switcher */}
+      <section className="events-controls-bar">
+        <div className="events-categories-pills">
+          {EVENT_CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              className={`event-cat-pill ${selectedCategory === cat ? "active" : ""}`}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat === "All" ? t("common.all", "सभी उत्सव") : cat}
+            </button>
+          ))}
+        </div>
 
-            <div className="event-card__content">
-              <div className="event-card__top">
-                <span className="event-card__date"> {event.date} </span>
-                <span className="event-card__month"> {event.month} </span>
-              </div>
-              <h3>{event.title}</h3>
-              <p className="event-card__desc"> {event.desc} </p>
-              <div className="event-card__footer">
-                <span>राधे राधे 🌸</span> <span>ब्रज दर्शन</span>
-              </div>
-            </div>
-          </article>
-        ))}
+        <div className="view-toggle-group">
+          <button
+            type="button"
+            className={`view-toggle-btn ${viewMode === "grid" ? "active" : ""}`}
+            onClick={() => setViewMode("grid")}
+          >
+            ⏹️ {t("common.gridView", "ग्रिड दृश्य")}
+          </button>
+          <button
+            type="button"
+            className={`view-toggle-btn ${viewMode === "map" ? "active" : ""}`}
+            onClick={() => setViewMode("map")}
+          >
+            🗺️ {t("common.mapView", "उत्सव मानचित्र")}
+          </button>
+        </div>
       </section>
+
+      {/* Map View vs Grid View */}
+      {viewMode === "map" ? (
+        <section className="events-map-container">
+          <div className="events-map-header">
+            <h3>🗺️ ब्रज उत्सव एवं परिक्रमा मानचित्र (Celebration Venues)</h3>
+            <p>विभिन्न उत्सव स्थलों के जीपीएस स्थान देखें</p>
+          </div>
+          <MapView
+            markers={eventMarkers}
+            height="520px"
+            activeId={activeEventId}
+            onMarkerClick={(ev) => setActiveEventId(ev.id)}
+          />
+        </section>
+      ) : (
+        <section className="events-grid">
+          {filteredEvents.map((event) => (
+            <article className="event-card" key={event.id || event.title}>
+              <div className="event-card__image-container">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="event-card__image"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = "/images/temples/default-temple.svg";
+                  }}
+                />
+                <span className="event-card__location-overlay">
+                  📍 {event.location}
+                </span>
+              </div>
+
+              <div className="event-card__content">
+                <div className="event-card__top">
+                  <span className="event-card__date"> {event.date} </span>
+                  <span className="event-card__month"> {event.month} </span>
+                </div>
+                <h3>{event.title}</h3>
+                {event.titleEn && <h4 className="event-en-title">{event.titleEn}</h4>}
+                <p className="event-card__desc"> {event.desc} </p>
+                
+                <div className="event-card__footer">
+                  <span>राधे राधे 🌸</span>
+                  {event.latitude && event.longitude ? (
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="event-directions-link"
+                    >
+                      स्थान देखें ↗
+                    </a>
+                  ) : (
+                    <span>ब्रज दर्शन</span>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
     </main>
   );
 }

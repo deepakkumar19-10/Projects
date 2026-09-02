@@ -1,86 +1,94 @@
-// src/components/Navbar.jsx
-
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useApp } from "../context/AppContext";
+import { speakDevotional } from "../services/speech";
+import LanguageSwitcher from "./LanguageSwitcher";
 import RadheToast from "./RadheToast";
 import "./Navbar.css";
 
 function Navbar() {
+  const { t } = useTranslation();
+  const { favorites, setIsFavoritesOpen, setIsPlannerOpen } = useApp();
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  const speakRadheRadhe = () => {
-    if (!("speechSynthesis" in window)) return;
+  // Close drawer on window resize above 992px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 992) {
+        setIsMobileOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    window.speechSynthesis.cancel();
-
-    const speech = new SpeechSynthesisUtterance("राधे राधे");
-
-    speech.lang = "hi-IN";
-    speech.rate = 0.85;
-    speech.pitch = 1;
-
-    const voices = window.speechSynthesis.getVoices();
-
-    const hindiVoice = voices.find(
-      (voice) =>
-        voice.lang === "hi-IN" || voice.lang.toLowerCase().includes("hi"),
-    );
-
-    if (hindiVoice) {
-      speech.voice = hindiVoice;
+  // Close on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsMobileOpen(false);
+      }
+    };
+    if (isMobileOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [isMobileOpen]);
 
-    window.speechSynthesis.speak(speech);
-  };
-
-  const handleNavClick = (pageName) => {
-    setToastMessage(`जय श्री कृष्णा — ${pageName}`);
+  const handleNavClick = (pageKey, label) => {
+    setToastMessage(`जय श्री कृष्णा — ${label}`);
     setShowToast(true);
-
-    speakRadheRadhe();
+    speakDevotional("राधे राधे");
+    setIsMobileOpen(false);
   };
 
-  const navClass = ({ isActive }) =>
-    isActive ? "nav-link active" : "nav-link";
+  const navClass = ({ isActive }) => (isActive ? "nav-link active" : "nav-link");
 
   return (
     <>
       <header className="navbar-wrapper">
         <div className="navbar-content">
-          {/* LEFT NAVIGATION */}
-          <nav className="nav-links-left">
+          {/* LEFT NAVIGATION (DESKTOP) */}
+          <nav className="nav-links-left" aria-label="Primary Left">
             <NavLink
               to="/"
               className={navClass}
-              onClick={() => handleNavClick("Home")}
+              onClick={() => handleNavClick("home", t("nav.home"))}
             >
-              HOME
+              {t("nav.home")}
             </NavLink>
 
             <NavLink
               to="/temples"
               className={navClass}
-              onClick={() => handleNavClick("Temples")}
+              onClick={() => handleNavClick("temples", t("nav.temples"))}
             >
-              TEMPLES
+              {t("nav.temples")}
             </NavLink>
 
             <NavLink
               to="/places"
               className={navClass}
-              onClick={() => handleNavClick("Ghats & Places")}
+              onClick={() => handleNavClick("places", t("nav.places"))}
             >
-              PLACES
+              {t("nav.places")}
             </NavLink>
 
             <NavLink
               to="/yatra"
               className={navClass}
-              onClick={() => handleNavClick("Yatra Tours")}
+              onClick={() => handleNavClick("yatra", t("nav.yatra"))}
             >
-              YATRA
+              {t("nav.yatra")}
             </NavLink>
           </nav>
 
@@ -88,66 +96,216 @@ function Navbar() {
           <NavLink
             to="/"
             className="navbar-brand"
-            onClick={() => handleNavClick("Home")}
+            onClick={() => handleNavClick("home", "DIVYABRAJ")}
           >
             <img
               src="/images/logo.png"
-              alt="Braj Darshan Logo"
+              alt="DIVYABRAJ Logo"
               className="nav-logo-img"
-              onError={(event) => {
-                event.currentTarget.style.display = "none";
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
               }}
             />
-
             <div className="brand-title">
-              <span className="title-en">BRAJ DARSHAN</span>
-              <span className="title-hi">ब्रज दर्शन</span>
+              <span className="title-en">{t("brand.titleEn", "DIVYABRAJ")}</span>
+              <span className="title-hi">{t("brand.titleHi", "दिव्य ब्रज दर्शन")}</span>
             </div>
           </NavLink>
 
-          {/* RIGHT NAVIGATION */}
-          <nav className="nav-links-right">
+          {/* RIGHT NAVIGATION (DESKTOP) */}
+          <nav className="nav-links-right" aria-label="Primary Right">
             <NavLink
               to="/panchang"
               className={navClass}
-              onClick={() => handleNavClick("Panchang")}
+              onClick={() => handleNavClick("panchang", t("nav.panchang"))}
             >
-              PANCHANG
+              {t("nav.panchang")}
             </NavLink>
 
             <NavLink
               to="/events"
               className={navClass}
-              onClick={() => handleNavClick("Events")}
+              onClick={() => handleNavClick("events", t("nav.events"))}
             >
-              EVENTS
+              {t("nav.events")}
             </NavLink>
 
             <NavLink
               to="/food"
               className={navClass}
-              onClick={() => handleNavClick("Braj Bhojan")}
+              onClick={() => handleNavClick("food", t("nav.food"))}
             >
-              FOOD
+              {t("nav.food")}
             </NavLink>
 
             <NavLink
               to="/contact"
               className={navClass}
-              onClick={() => handleNavClick("Contact")}
+              onClick={() => handleNavClick("contact", t("nav.contact"))}
             >
-              CONTACT
+              {t("nav.contact")}
             </NavLink>
 
-            <NavLink
-              to="/yatra"
-              className="btn-nav-plan"
-              onClick={() => handleNavClick("Plan Your Trip")}
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
+            {/* Wishlist / Favorites Button */}
+            <button
+              type="button"
+              className="btn-nav-favorites"
+              onClick={() => setIsFavoritesOpen(true)}
+              title={t("nav.favorites")}
+              aria-label={t("nav.favorites")}
             >
-              PLAN TRIP
-            </NavLink>
+              <span>❤️</span>
+              {favorites.length > 0 && (
+                <span className="fav-badge">{favorites.length}</span>
+              )}
+            </button>
+
+            {/* Custom Trip Planner CTA */}
+            <button
+              type="button"
+              className="btn-nav-plan"
+              onClick={() => setIsPlannerOpen(true)}
+            >
+              ✨ {t("nav.planTrip")}
+            </button>
           </nav>
+
+          {/* MOBILE CONTROLS & HAMBURGER */}
+          <div className="mobile-controls">
+            <LanguageSwitcher />
+            
+            <button
+              type="button"
+              className="btn-nav-favorites mobile-fav"
+              onClick={() => setIsFavoritesOpen(true)}
+              aria-label={t("nav.favorites")}
+            >
+              <span>❤️</span>
+              {favorites.length > 0 && (
+                <span className="fav-badge">{favorites.length}</span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              className={`nav-hamburger ${isMobileOpen ? "open" : ""}`}
+              onClick={() => setIsMobileOpen((prev) => !prev)}
+              aria-label="Toggle Navigation Menu"
+              aria-expanded={isMobileOpen}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
+
+        {/* MOBILE SLIDE-OUT DRAWER */}
+        {isMobileOpen && (
+          <div className="mobile-drawer-overlay" onClick={() => setIsMobileOpen(false)}>
+            <div
+              className="mobile-drawer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="mobile-drawer-header">
+                <div className="brand-title">
+                  <span className="title-en">{t("brand.titleEn", "DIVYABRAJ")}</span>
+                  <span className="title-hi">{t("brand.titleHi", "ब्रज दर्शन")}</span>
+                </div>
+                <button
+                  type="button"
+                  className="drawer-close-btn"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="mobile-drawer-links">
+                <NavLink
+                  to="/"
+                  className={navClass}
+                  onClick={() => handleNavClick("home", t("nav.home"))}
+                >
+                  🏠 {t("nav.home")}
+                </NavLink>
+
+                <NavLink
+                  to="/temples"
+                  className={navClass}
+                  onClick={() => handleNavClick("temples", t("nav.temples"))}
+                >
+                  🛕 {t("nav.temples")}
+                </NavLink>
+
+                <NavLink
+                  to="/places"
+                  className={navClass}
+                  onClick={() => handleNavClick("places", t("nav.places"))}
+                >
+                  📍 {t("nav.places")}
+                </NavLink>
+
+                <NavLink
+                  to="/yatra"
+                  className={navClass}
+                  onClick={() => handleNavClick("yatra", t("nav.yatra"))}
+                >
+                  📅 {t("nav.yatra")}
+                </NavLink>
+
+                <NavLink
+                  to="/panchang"
+                  className={navClass}
+                  onClick={() => handleNavClick("panchang", t("nav.panchang"))}
+                >
+                  🗓️ {t("nav.panchang")}
+                </NavLink>
+
+                <NavLink
+                  to="/events"
+                  className={navClass}
+                  onClick={() => handleNavClick("events", t("nav.events"))}
+                >
+                  🎉 {t("nav.events")}
+                </NavLink>
+
+                <NavLink
+                  to="/food"
+                  className={navClass}
+                  onClick={() => handleNavClick("food", t("nav.food"))}
+                >
+                  🍽️ {t("nav.food")}
+                </NavLink>
+
+                <NavLink
+                  to="/contact"
+                  className={navClass}
+                  onClick={() => handleNavClick("contact", t("nav.contact"))}
+                >
+                  📞 {t("nav.contact")}
+                </NavLink>
+              </div>
+
+              <div className="mobile-drawer-footer">
+                <button
+                  type="button"
+                  className="btn-nav-plan mobile-plan-btn"
+                  onClick={() => {
+                    setIsMobileOpen(false);
+                    setIsPlannerOpen(true);
+                  }}
+                >
+                  ✨ {t("nav.planTrip")}
+                </button>
+                <p className="mobile-chant">॥ राधे राधे ॥</p>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {showToast && (

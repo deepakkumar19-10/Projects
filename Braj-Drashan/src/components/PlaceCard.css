@@ -65,6 +65,29 @@
   backdrop-filter: blur(6px);
 }
 
+.place-fav-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: 50%;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.place-fav-btn:hover {
+  transform: scale(1.15);
+  background: #ffffff;
+}
+
 .image-title {
   position: absolute;
   left: 18px;

@@ -1,0 +1,105 @@
+{
+  "brand": {
+    "titleEn": "DIVYABRAJ",
+    "titleHi": "दिव्य ब्रज दर्शन",
+    "tagline": "श्री कृष्ण की पावन लीला भूमि में आपका स्वागत है"
+  },
+  "nav": {
+    "home": "होम",
+    "temples": "मंदिर",
+    "places": "स्थल एवं घाट",
+    "yatra": "यात्रा गाइड",
+    "panchang": "पंचांग",
+    "events": "उत्सव",
+    "food": "ब्रज भोजन",
+    "contact": "सहायता",
+    "planTrip": "प्लान ट्रिप",
+    "favorites": "विशलिस्ट",
+    "planner": "यात्रा प्लानर"
+  },
+  "common": {
+    "viewDarshan": "दर्शन देखें",
+    "explore": "और देखें",
+    "details": "विस्तृत जानकारी",
+    "getDirections": "दिशा मार्ग (Google Maps)",
+    "viewOnMap": "मानचित्र पर देखें",
+    "gridView": "ग्रिड दृश्य",
+    "mapView": "मानचित्र दृश्य",
+    "all": "सभी (All)",
+    "deity": "ईष्ट देव",
+    "location": "स्थान",
+    "timings": "समय सारणी",
+    "history": "पावन इतिहास",
+    "tips": "दर्शन टिप्स",
+    "back": "वापस जाएँ",
+    "saveFavorite": "पसंदीदा में जोड़ें",
+    "removeFavorite": "हटाएँ",
+    "close": "बंद करें"
+  },
+  "home": {
+    "heroSmall": "DIVINE PILGRIMAGE OF BRAJ",
+    "heroHeading": "ब्रज दर्शन",
+    "heroSubheading": "श्री कृष्ण की पावन लीला भूमि में आपका हार्दिक स्वागत है",
+    "btnTemples": "मंदिर दर्शन देखें",
+    "btnYatra": "यात्रा प्लान करें",
+    "introTitle": "दिव्य धाम ब्रज भूमि",
+    "introDesc": "मथुरा, वृंदावन, गोवर्धन, बरसाना, गोकुल और नंदगांव — जहाँ भगवान श्री कृष्ण और श्री राधा रानी की अलौकिक लीलाएं आज भी कण-कण में विद्यमान हैं।",
+    "featuredTitle": "प्रमुख दर्शनीय मंदिर",
+    "featuredSub": "दर्शन, आरती समय और पावन इतिहास",
+    "viewAllTemples": "सभी मंदिर दर्शन देखें →",
+    "reviewsTitle": "भक्तों के पावन अनुभव",
+    "reviewsSub": "तीर्थ यात्रियों द्वारा साझा किए गए अविस्मरणीय अनुभव"
+  },
+  "countdown": {
+    "title": "आगामी महापर्व",
+    "days": "दिन",
+    "hours": "घंटे",
+    "minutes": "मिनट",
+    "seconds": "सेकंड",
+    "remaining": "शेष हैं"
+  },
+  "favorites": {
+    "title": "मेरी पसंदीदा सूची (Saved Places)",
+    "empty": "आपने अभी तक कोई मंदिर या स्थान सेव नहीं किया है।",
+    "hint": "कार्ड पर लगे दिल ❤️ आइकन पर क्लिक करके अपने पसंदीदा स्थल यहाँ सेव करें।"
+  },
+  "planner": {
+    "modalTitle": "स्मार्ट ब्रज यात्रा प्लानर (Custom Itinerary)",
+    "selectDays": "यात्रा की अवधि चुनें",
+    "dayCount": "दिन",
+    "selectPace": "यात्रा की गति (Travel Pace)",
+    "paceRelaxed": "आरामदायक (Relaxed)",
+    "paceModerate": "संतुलित (Moderate)",
+    "paceFast": "तीव्र दर्शन (Fast-track)",
+    "generateBtn": "यात्रा योजना तैयार करें",
+    "myCustomPlan": "आपकी व्यक्तिगत यात्रा योजना"
+  },
+  "panchang": {
+    "heroTag": "🪷 वैदिक पंचांग",
+    "heroTitle": "हिंदू पंचांग",
+    "heroDesc": "ब्रज धाम की यात्रा, पर्व और शुभ दिनों के लिए तिथि, नक्षत्र और वैदिक गणना।",
+    "selectedDate": "चयनित तारीख",
+    "selectDate": "तारीख चुनें",
+    "todayPanchang": "आज का पंचांग",
+    "tithi": "तिथि",
+    "paksha": "पक्ष",
+    "nakshatra": "नक्षत्र",
+    "yoga": "योग",
+    "karana": "करण",
+    "samvat": "विक्रम संवत्",
+    "sunrise": "सूर्योदय",
+    "sunset": "सूर्यास्त",
+    "rahukaal": "राहुकाल",
+    "brajFestivals": "ब्रज पर्व"
+  },
+  "food": {
+    "heroTag": "🍽️ स्वाद भी, भक्ति भी",
+    "heroTitle": "Famous Foods of Braj",
+    "heroDesc": "ब्रज दर्शन केवल मंदिरों तक सीमित नहीं है। मथुरा-वृंदावन का स्वाद भी इस यात्रा का अभिन्न हिस्सा है।"
+  },
+  "events": {
+    "heroTag": "🪷 ब्रज उत्सव",
+    "heroTitle": "Festivals & Celebrations in Braj",
+    "heroDesc": "मथुरा, वृंदावन, बरसाना, गोकुल और गोवर्धन के प्रमुख आध्यात्मिक उत्सवों की जानकारी।"
+  }
+}

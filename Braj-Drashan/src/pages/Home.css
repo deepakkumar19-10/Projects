@@ -6,6 +6,13 @@
   background-color: var(--braj-bg, #fff9ed);
 }
 
+.home-countdown-wrapper {
+  margin-top: -35px;
+  position: relative;
+  z-index: 10;
+  padding: 0 20px;
+}
+
 /* 1. INTRO & HERO SECTION */
 .intro-section {
   background-color: var(--braj-white, #ffffff);

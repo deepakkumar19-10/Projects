@@ -10,10 +10,7 @@
   box-shadow: var(--braj-shadow-sm, 0 6px 20px rgba(45, 32, 24, 0.06));
   display: flex;
   flex-direction: column;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .temple-card:hover {
@@ -24,9 +21,10 @@
 
 .temple-card-image-wrap {
   position: relative;
-  height: 210px;
+  height: 220px;
   width: 100%;
   overflow: hidden;
+  background: #f1e8dd;
 }
 
 .temple-card-image-wrap img {
@@ -43,7 +41,7 @@
 .temple-card-city {
   position: absolute;
   top: 12px;
-  right: 12px;
+  left: 12px;
   background: rgba(23, 50, 77, 0.88);
   color: #ffffff;
   font-size: 12px;
@@ -55,6 +53,29 @@
   backdrop-filter: blur(4px);
 }
 
+.temple-fav-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: 50%;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.temple-fav-btn:hover {
+  transform: scale(1.15);
+  background: #ffffff;
+}
+
 .temple-card-content {
   padding: 20px;
   display: flex;
@@ -63,14 +84,14 @@
 }
 
 .temple-card-title-hi {
-  font-size: 1.25rem;
+  font-size: 1.22rem;
   color: var(--braj-navy, #17324d);
   font-weight: 700;
   margin: 0 0 2px 0;
 }
 
 .temple-card-title-en {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--braj-muted, #786a5d);
   margin: 0 0 10px 0;
   font-weight: 600;
@@ -92,8 +113,14 @@
 }
 
 /* Action Button */
+.temple-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .temple-card-btn {
-  display: block;
+  flex-grow: 1;
   text-align: center;
   background-color: var(--braj-primary, #d97706);
   color: #ffffff;
@@ -101,12 +128,30 @@
   font-size: 0.9rem;
   padding: 11px 16px;
   border-radius: 10px;
-  transition:
-    background-color 0.25s ease,
-    transform 0.2s ease;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
 .temple-card-btn:hover {
   background-color: var(--braj-primary-dark, #b85f05);
+  transform: translateY(-1px);
+}
+
+.temple-card-map-btn {
+  width: 44px;
+  height: 44px;
+  background: var(--braj-bg, #fff9ed);
+  border: 1px solid var(--braj-border, #eee2d4);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.temple-card-map-btn:hover {
+  background: var(--braj-primary, #d97706);
+  border-color: var(--braj-primary, #d97706);
   transform: translateY(-1px);
 }

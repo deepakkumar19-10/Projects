@@ -1,42 +1,57 @@
 /* src/pages/Temples.css */
 .temples-page-container {
-  max-width: 1280px;
-  margin: 40px auto;
-  padding: 0 20px;
+  max-width: 1300px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 110px 0 70px;
 }
 
 .temples-page-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 .temples-page-header h1 {
-  font-size: 2.2rem;
-  color: #5c381e;
-  margin-bottom: 6px;
-  padding-top: 40px;
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  color: var(--braj-navy, #17324d);
+  font-weight: 800;
+  margin: 8px 0;
 }
 
 .temples-page-header p {
-  color: #8c6a4d;
-  font-size: 1rem;
-  margin-bottom: 24px;
+  color: var(--braj-muted, #786a5d);
+  font-size: 15px;
+  max-width: 680px;
+  margin: 0 auto 24px;
+}
+
+.temples-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid var(--braj-border, #eee2d4);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(45, 32, 24, 0.05);
+  margin-bottom: 30px;
 }
 
 .city-filter-tabs {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .filter-tab-btn {
-  background-color: #faf5ee;
-  color: #5c381e;
-  border: 1px solid #d8c3a5;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  background-color: var(--braj-bg, #fff9ed);
+  color: var(--braj-navy, #17324d);
+  border: 1px solid var(--braj-border, #eee2d4);
+  padding: 8px 16px;
+  border-radius: var(--braj-radius-full, 9999px);
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -44,13 +59,55 @@
 
 .filter-tab-btn.active,
 .filter-tab-btn:hover {
-  background-color: #b24021;
+  background-color: var(--braj-primary, #d97706);
   color: #ffffff;
-  border-color: #b24021;
+  border-color: var(--braj-primary, #d97706);
+}
+
+.view-toggle-group {
+  display: flex;
+  gap: 6px;
+  background: var(--braj-bg, #fff9ed);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--braj-border, #eee2d4);
+}
+
+.view-toggle-btn {
+  padding: 7px 14px;
+  border: none;
+  background: transparent;
+  color: var(--braj-navy, #17324d);
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-toggle-btn.active {
+  background: #ffffff;
+  color: var(--braj-primary, #d97706);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .temples-grid-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: 28px;
+}
+
+.temples-map-section {
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .temples-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .view-toggle-group {
+    justify-content: center;
+  }
 }

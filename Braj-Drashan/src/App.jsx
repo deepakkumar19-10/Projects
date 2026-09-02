@@ -1,10 +1,10 @@
-// src/App.jsx
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import PageTransition from "./components/PageTransition";
+import FavoritesDrawer from "./components/FavoritesDrawer";
+import YatraPlannerModal from "./components/YatraPlannerModal";
 
 import Home from "./pages/Home";
 import Temples from "./pages/Temples";
@@ -21,6 +21,8 @@ function App() {
   return (
     <>
       <Navbar />
+      <FavoritesDrawer />
+      <YatraPlannerModal />
 
       <PageTransition>
         <Routes>

@@ -53,7 +53,7 @@ function Contact() {
   };
 
   return (
-    <div className="contact-page-wrapper">
+    <div className="contact-page-wrapper page-transition">
       {/* 1. Header Section */}
       <div className="contact-header">
         <span className="contact-badge">

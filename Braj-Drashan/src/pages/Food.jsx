@@ -1,121 +1,175 @@
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useApp } from "../context/AppContext";
+import MapView from "../components/MapView";
+import foodData from "../data/food.json";
 import "../App.css";
 import "./Food.css";
 
-const brajFoods = [
-  {
-    name: "Mathura Peda",
-    category: "मिठाई",
-    image: "/images/food/mathura-peda.png",
-    desc: "मथुरा की सबसे प्रसिद्ध मिठाइयों में से एक, खोया, चीनी और इलायची से तैयार किया जाने वाला पारंपरिक पेड़ा।",
-    place: "Mathura",
-  },
-  {
-    name: "Puri Sabzi",
-    category: "नाश्ता",
-    image: "/images/food/puri-sabzi.png",
-    desc: "दाल से भरी गरमा-गरम बेड़मी पूरी के साथ मसालेदार आलू की सब्जी ब्रज का लोकप्रिय पारंपरिक नाश्ता है।",
-    place: "Mathura",
-  },
-  {
-    name: "Malai Makkhan",
-    category: "पारंपरिक",
-    image: "/images/food/malai-makkhan.png",
-    desc: "सर्दियों में मिलने वाली हल्की, मलाईदार और झागदार ब्रज की विशेष मिठास जिसे स्थानीय रूप में मक्खन मलाई भी कहा जाता है।",
-    place: "Mathura & Vrindavan",
-  },
-  {
-    name: "Kulhar Lassi",
-    category: "पेय",
-    image: "/images/food/kulhar-lassi.png",
-    desc: "गाढ़ी दही वाली लस्सी के ऊपर मलाई और सूखे मेवों की सजावट, जिसे मिट्टी के कुल्हड़ में परोसा जाता है।",
-    place: "Vrindavan",
-  },
-  {
-    name: "Rabri",
-    category: "मिठाई",
-    image: "/images/food/rabri.png",
-    desc: "धीमी आँच पर गाढ़े किए गए दूध से बनी समृद्ध रबड़ी ब्रज की मिठाई परंपरा का खास हिस्सा है।",
-    place: "Mathura & Vrindavan",
-  },
-  {
-    name: "Kachori & Sabzi",
-    category: "नाश्ता",
-    image: "/images/food/kachori-sabzi.png",
-    desc: "खस्ता मसालेदार कचौरी को तीखी आलू की सब्जी और चटनी के साथ परोसा जाता है।",
-    place: "Mathura",
-  },
-  {
-    name: "Aloo Tikki",
-    category: "Street Food",
-    image: "/images/food/aloo-tikki.png",
-    desc: "कुरकुरी आलू टिक्की, दही, चटनी और मसालों के साथ परोसी जाने वाली लोकप्रिय शाम की चाट।",
-    place: "Vrindavan",
-  },
-  {
-    name: "Jalebi",
-    category: "मिठाई",
-    image: "/images/food/jalebi.png",
-    desc: "गरमा-गरम चाशनी वाली जलेबी ब्रज की चाय और नाश्ते की संस्कृति में विशेष स्थान रखती है।",
-    place: "Braj Region",
-  },
-];
+const CATEGORIES = ["All", "मिठाई", "नाश्ता", "पारंपरिक", "पेय", "Street Food"];
 
 export default function Food() {
+  const { t } = useTranslation();
+  const { isFavorite, toggleFavorite } = useApp();
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [viewMode, setViewMode] = useState("grid"); // 'grid' | 'map'
+  const [activeFoodId, setActiveFoodId] = useState(null);
+
+  const filteredFoods =
+    selectedCategory === "All"
+      ? foodData
+      : foodData.filter((item) => item.category === selectedCategory);
+
+  const foodMarkers = filteredFoods.map((f) => ({
+    id: f.id,
+    name: f.name,
+    nameHindi: f.nameHindi,
+    city: f.place,
+    latitude: f.latitude,
+    longitude: f.longitude,
+    image: f.image,
+    category: "food"
+  }));
+
   return (
     <main className="food-page page-transition">
       <section className="food-hero">
-        <div>
-          <span className="section-tag">🍽️ Where Flavor Meets Faith</span>
+        <div className="food-hero-text">
+          <span className="section-tag">🍽️ {t("food.heroTag", "Where Flavor Meets Faith")}</span>
           <h1>
             स्वाद भी <span>भक्ति भी</span>
           </h1>
           <p>
-            ब्रज दर्शन केवल मंदिरों और तीर्थों तक सीमित नहीं है। Mathura और
-            Vrindavan का स्वाद भी इस यात्रा का महत्वपूर्ण हिस्सा है।
+            ब्रज दर्शन केवल मंदिरों और तीर्थों तक सीमित नहीं है। Mathura के पेड़े, वृंदावन की लस्सी, कचौरी-सब्जी और मक्खन मलाई का दिव्य स्वाद भी इस पावन यात्रा का अभिन्न अंग है।
           </p>
         </div>
         <div className="food-hero__symbol">🍯</div>
       </section>
 
-      <section className="food-heading">
-        <span className="section-tag">
-          <h1>ब्रज का भोजन</h1>
-        </span>
-        <h2>
-          Famous <span>Foods of Braj</span>
-        </h2>
-        <p>
-          स्थानीय मिठाइयों, नाश्ते, पेय और street food का पारंपरिक स्वाद अनुभव
-          करें।
-        </p>
+      {/* Category Pills & View Switcher */}
+      <section className="food-controls-bar">
+        <div className="food-categories-pills">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              className={`food-cat-pill ${selectedCategory === cat ? "active" : ""}`}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat === "All" ? t("common.all", "सभी व्यंजन") : cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="view-toggle-group">
+          <button
+            type="button"
+            className={`view-toggle-btn ${viewMode === "grid" ? "active" : ""}`}
+            onClick={() => setViewMode("grid")}
+          >
+            ⏹️ {t("common.gridView", "ग्रिड दृश्य")}
+          </button>
+          <button
+            type="button"
+            className={`view-toggle-btn ${viewMode === "map" ? "active" : ""}`}
+            onClick={() => setViewMode("map")}
+          >
+            🗺️ {t("common.mapView", "फूड मैप")}
+          </button>
+        </div>
       </section>
 
-      <section className="food-grid">
-        {brajFoods.map((food) => (
-          <article className="food-card" key={food.name}>
-            <div className="food-card__image-container">
-              <img
-                src={food.image}
-                alt={food.name}
-                className="food-card__image"
-                loading="lazy"
-              />
-              <span className="food-card__location-overlay">
-                📍 {food.place}
-              </span>
-            </div>
+      {/* Content: Map View vs Grid View */}
+      {viewMode === "map" ? (
+        <section className="food-map-container">
+          <div className="food-map-header">
+            <h3>🗺️ ब्रज के प्रसिद्ध भोजनालय, दुकानें व मिष्ठान भंडार</h3>
+            <p>मार्कर पर क्लिक करें और प्रसिद्ध दुकानों का स्थान देखें</p>
+          </div>
+          <MapView
+            markers={foodMarkers}
+            height="520px"
+            activeId={activeFoodId}
+            onMarkerClick={(f) => setActiveFoodId(f.id)}
+          />
+        </section>
+      ) : (
+        <section className="food-grid">
+          {filteredFoods.map((food) => {
+            const fav = isFavorite(food.id, "food");
+            return (
+              <article className="food-card" key={food.id || food.name}>
+                <div className="food-card__image-container">
+                  <img
+                    src={food.image}
+                    alt={food.nameHindi || food.name}
+                    className="food-card__image"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.src = "/images/temples/default-temple.svg";
+                    }}
+                  />
+                  <span className="food-card__location-overlay">
+                    📍 {food.place}
+                  </span>
 
-            <div className="food-card__content">
-              <span className="food-card__category">{food.category}</span>
-              <h3>{food.name}</h3>
-              <p>{food.desc}</p>
-              <div className="food-card__bottom">
-                <span>ब्रज स्वाद</span> <strong>राधे राधे 🌸</strong>
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
+                  {/* Favorite Button */}
+                  <button
+                    type="button"
+                    className={`food-fav-btn ${fav ? "active" : ""}`}
+                    onClick={() =>
+                      toggleFavorite({
+                        id: food.id,
+                        type: "food",
+                        name: food.name,
+                        nameHindi: food.nameHindi,
+                        city: food.place,
+                        image: food.image,
+                        link: "/food"
+                      })
+                    }
+                    title={fav ? "Remove from favorites" : "Add to favorites"}
+                  >
+                    {fav ? "❤️" : "🤍"}
+                  </button>
+                </div>
+
+                <div className="food-card__content">
+                  <div className="food-card-header">
+                    <span className="food-card__category">{food.category}</span>
+                    {food.priceRange && <span className="food-price">{food.priceRange}</span>}
+                  </div>
+                  <h3>{food.nameHindi || food.name}</h3>
+                  <h4 className="food-en-name">{food.name}</h4>
+                  <p>{food.desc}</p>
+                  
+                  {food.famousShops && (
+                    <div className="food-famous-shops">
+                      <strong>🏪 प्रसिद्ध स्थल:</strong> {food.famousShops}
+                    </div>
+                  )}
+
+                  <div className="food-card__bottom">
+                    <span>ब्रज स्वाद</span>
+                    {food.latitude && food.longitude ? (
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${food.latitude},${food.longitude}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="food-directions-link"
+                      >
+                        दिशा मार्ग ↗
+                      </a>
+                    ) : (
+                      <strong>राधे राधे 🌸</strong>
+                    )}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </section>
+      )}
 
       <section className="food-banner">
         <div>
@@ -124,8 +178,7 @@ export default function Food() {
             मंदिर दर्शन के साथ <span>ब्रज का स्वाद</span>
           </h2>
           <p>
-            अपनी यात्रा में Mathura Peda, Kachori & Sabzi, Lassi और स्थानीय
-            मिठाइयों का स्वाद लेना न भूलें।
+            अपनी यात्रा में Mathura Peda, Kachori & Sabzi, Lassi और स्थानीय मिठाइयों का स्वाद लेना न भूलें।
           </p>
         </div>
         <div className="food-banner__emoji"> 🪷 </div>
